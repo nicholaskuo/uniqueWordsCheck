@@ -1,0 +1,76 @@
+package setLab1;
+
+import java.util.*;  
+import java.io.*;
+
+public class SetLab1Main 
+{
+	public static void main(String[] args) throws IOException
+	{
+		// create scanner
+		Scanner reader = new Scanner(new File ("catInHat.txt"));
+		
+		// declare variables
+		String text;
+		
+		// initialize tree set
+		Set<String> ts = new TreeSet<String>();
+		
+		// print text file
+		System.out.println("Input text: ");
+		System.out.print("Peter Piper picked a peck of pickled peppers.\n" + 
+				"A peck of pickled peppers Peter Piper picked.\n" + 
+				"If Peter Piper picked a peck of pickled peppers,\n" + 
+				"Where's the peck of pickled peppers Peter Piper picked?\n" + 
+				"Peter Piper picked a peck of pickled peppers.\n" + 
+				"But if Peter Piper picked a peck of pickled peppers,\n" + 
+				"How many pickled peppers that Peter Piper picked?");
+		
+		// add each word in text to tree set
+		while (reader.hasNextLine())
+		{
+			text = reader.next();
+			if (text.charAt(text.length() - 1) == '?'||text.charAt(text.length() - 1) == '.'||text.charAt(text.length() - 1) == ',')
+				text = text.substring(0, text.length()-1);
+			ts.add(text.toLowerCase());
+		}
+		
+		// print words in tree set
+		System.out.println("\n\nWord list:");
+		for (String x: ts)
+			System.out.println(x);
+		
+		// print size of tree set
+		System.out.println("\nList Size: " + ts.size());
+	}
+}
+
+/*
+Input text: 
+Peter Piper picked a peck of pickled peppers.
+A peck of pickled peppers Peter Piper picked.
+If Peter Piper picked a peck of pickled peppers,
+Where's the peck of pickled peppers Peter Piper picked?
+Peter Piper picked a peck of pickled peppers.
+But if Peter Piper picked a peck of pickled peppers,
+How many pickled peppers that Peter Piper picked?
+
+Word list:
+a
+but
+how
+if
+many
+of
+peck
+peppers
+peter
+picked
+pickled
+piper
+that
+the
+where's
+
+List Size: 15
+*/
